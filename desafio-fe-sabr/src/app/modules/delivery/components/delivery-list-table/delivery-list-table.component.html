@@ -1,0 +1,73 @@
+<div class="container">
+  <mat-form-field class="full-width">
+    <mat-label>Busca</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      #input
+      placeholder="Pesquise por qualquer campo"
+    />
+    <img
+      fxFlex
+      src="../../../../../assets/search.png"
+      width="32px"
+      height="32px"
+    />
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let delivery">{{ delivery.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="documento">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Documento</th>
+      <td mat-cell *matCellDef="let delivery">{{ delivery.documento }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="motorista">
+      <th mat-header-cell *matHeaderCellDef>Motorista</th>
+      <td mat-cell *matCellDef="let delivery">
+        {{ delivery.motorista.nome }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cliente_origem">
+      <th mat-header-cell *matHeaderCellDef>Cliente Origem</th>
+      <td mat-cell *matCellDef="let delivery">
+        {{ delivery.cliente_origem.nome }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cliente_destino">
+      <th mat-header-cell *matHeaderCellDef>Cliente Destino</th>
+      <td mat-cell *matCellDef="let delivery">
+        {{ delivery.cliente_destino.nome }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status_entrega">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td mat-cell *matCellDef="let delivery">
+        {{ delivery.status_entrega }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="selection.toggle(row)"
+    ></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        Nenhum dado encontrado para o filtro "{{ input.value }}"
+      </td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+  </mat-paginator>
+</div>
