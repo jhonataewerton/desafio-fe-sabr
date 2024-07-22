@@ -4,11 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'list-delivery',
+    redirectTo: 'delivery',
     pathMatch: 'full',
   },
   {
-    path: 'list-delivery',
+    path: 'delivery',
     loadChildren: () =>
       import('./modules/delivery/delivery.module').then(
         (m) => m.DeliveryModule

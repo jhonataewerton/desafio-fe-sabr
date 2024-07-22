@@ -1,3 +1,19 @@
 .full-width {
   width: 100%;
 }
+
+.status {
+  font-weight: bold;
+}
+
+.success {
+  color: green;
+}
+
+.fail {
+  color: red;
+}
+
+.waiting {
+  color: orange;
+}

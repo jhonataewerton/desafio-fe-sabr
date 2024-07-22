@@ -1,0 +1,16 @@
+<mat-toolbar>
+  <button
+    mat-icon-button
+    aria-label="Example icon-button with menu icon"
+    [matMenuTriggerFor]="menu"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/delivery/list-delivery">
+      Listar Entregas
+    </button>
+    <button mat-menu-item routerLink="/delivery/dashboard">Dashboard</button>
+  </mat-menu>
+  <span>Teste Front-End SABR</span>
+</mat-toolbar>

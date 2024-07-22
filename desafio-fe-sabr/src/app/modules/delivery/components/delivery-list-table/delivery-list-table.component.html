@@ -49,7 +49,7 @@
 
     <ng-container matColumnDef="status_entrega">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-      <td mat-cell *matCellDef="let delivery">
+      <td mat-cell *matCellDef="let delivery" class="status" [ngClass]="setClassDelivery(delivery.status_entrega)">
         {{ delivery.status_entrega }}
       </td>
     </ng-container>

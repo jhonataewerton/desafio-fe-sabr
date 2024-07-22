@@ -16,9 +16,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [ListDeliveryComponent, DeliveryListTableComponent],
+  declarations: [ListDeliveryComponent, DeliveryListTableComponent, DashboardComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(DELIVERY_ROUTES),
