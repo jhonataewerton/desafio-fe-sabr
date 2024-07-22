@@ -13,13 +13,31 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   contentData!: GetAllDeliveriesResponse[];
-  contentDataByDeliver!: any[]
-  columnsTableDeliveryByDeliver: string[] = ['motorista', 'qtdTotal', 'qtdEntregue']
+  contentDataByDeliver!: any[];
+  contentDataByNeighbourhood!: any[];
+  columnsTableDeliveryByDeliver: string[] = [
+    'motorista',
+    'qtdTotal',
+    'qtdEntregue',
+  ];
+
+  columnsTableUnsuccessfully: string[] = ['motorista', 'qtdFalha'];
+
+  columnsTableDeliveryByNeighbourhood: string[] = [
+    'bairro',
+    'qtdTotal',
+    'qtdEntregue',
+  ];
 
   ngOnInit(): void {
-    this.contentData = this.deliveriesDataTransferServiceService.getDeliveryDatas();
-    console.log(this.deliveriesDataTransferServiceService.getCountDeliveryByDeliver())
-    this.contentDataByDeliver = this.deliveriesDataTransferServiceService.getCountDeliveryByDeliver()
-  }
+    this.contentData =
+      this.deliveriesDataTransferServiceService.getDeliveryDatas();
+    this.contentDataByDeliver = this.deliveriesDataTransferServiceService
+      .getCountDeliveryByDeliver()
+      .filter((res) => 'motorista' in res);
 
+    this.contentDataByNeighbourhood = this.deliveriesDataTransferServiceService
+      .getCountDeliveryByDeliver()
+      .filter((res) => 'bairro' in res);
+  }
 }

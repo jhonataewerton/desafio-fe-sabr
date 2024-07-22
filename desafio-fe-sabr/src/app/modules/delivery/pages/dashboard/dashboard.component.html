@@ -3,3 +3,15 @@
   [columns]="columnsTableDeliveryByDeliver"
   [isMaintTable]="false"
 ></app-delivery-list-table>
+
+<app-delivery-list-table
+  [contentTableData]="contentDataByDeliver"
+  [columns]="columnsTableUnsuccessfully"
+  [isMaintTable]="false"
+></app-delivery-list-table>
+
+<app-delivery-list-table
+  [contentTableData]="contentDataByNeighbourhood"
+  [columns]="columnsTableDeliveryByNeighbourhood"
+  [isMaintTable]="false"
+></app-delivery-list-table>

@@ -33,6 +33,7 @@ export class DeliveriesDataTransferServiceService {
   getCountDeliveryByDeliver() {
     const motoristaData = this.deliveryDatas.reduce((acc, delivery) => {
       const nomeMotorista = delivery.motorista.nome;
+      const bairro = delivery.cliente_destino.bairro;
       const status = delivery.status_entrega;
 
       if (!acc[nomeMotorista]) {
@@ -40,13 +41,32 @@ export class DeliveriesDataTransferServiceService {
           motorista: { nome: nomeMotorista },
           totalEntregas: 0,
           entregasRealizadas: 0,
+          entregasSemSucesso: 0
         };
       }
 
+      if (!acc[bairro]) {
+        acc[bairro] = {
+          bairro: { nome: bairro },
+          totalEntregas: 0,
+          entregasRealizadas: 0,
+          entregasSemSucesso: 0,
+        };
+      }
+
+      acc[bairro].totalEntregas++;
       acc[nomeMotorista].totalEntregas++;
+
+      if (status === 'ENTREGUE') {
+        acc[bairro].entregasRealizadas++;
+      }
 
       if (status === 'ENTREGUE' || status === 'pendente') {
         acc[nomeMotorista].entregasRealizadas++;
+      }
+
+      if (status === 'INSUCESSO') {
+        acc[nomeMotorista].entregasSemSucesso++;
       }
 
       return acc;
