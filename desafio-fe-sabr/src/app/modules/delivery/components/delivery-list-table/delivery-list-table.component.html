@@ -1,5 +1,5 @@
 <div class="container">
-  <mat-form-field class="full-width">
+  <mat-form-field class="full-width" *ngIf="isMaintTable">
     <mat-label>Busca</mat-label>
     <input
       matInput
@@ -47,9 +47,28 @@
       </td>
     </ng-container>
 
+    <ng-container matColumnDef="qtdTotal">
+      <th mat-header-cell *matHeaderCellDef>Quantidade Total de Entregas</th>
+      <td mat-cell *matCellDef="let delivery">
+        {{ delivery.totalEntregas }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="qtdEntregue">
+      <th mat-header-cell *matHeaderCellDef>Quantidade Entregue</th>
+      <td mat-cell *matCellDef="let delivery">
+        {{ delivery.entregasRealizadas }}
+      </td>
+    </ng-container>
+
     <ng-container matColumnDef="status_entrega">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-      <td mat-cell *matCellDef="let delivery" class="status" [ngClass]="setClassDelivery(delivery.status_entrega)">
+      <td
+        mat-cell
+        *matCellDef="let delivery"
+        class="status"
+        [ngClass]="setClassDelivery(delivery.status_entrega)"
+      >
         {{ delivery.status_entrega }}
       </td>
     </ng-container>
@@ -61,13 +80,15 @@
       (click)="selection.toggle(row)"
     ></tr>
 
-    <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4">
-        Nenhum dado encontrado para o filtro "{{ input.value }}"
-      </td>
-    </tr>
+    <div *ngIf="isMaintTable">
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">
+          <!-- Nenhum dado encontrado para o filtro "{{ input.value }}" -->
+        </td>
+      </tr>
+    </div>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons *ngIf="isMaintTable">
   </mat-paginator>
 </div>

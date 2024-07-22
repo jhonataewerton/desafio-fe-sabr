@@ -25,23 +25,21 @@ export class DeliveryListTableComponent
   @ViewChild(MatSort) sort!: MatSort;
 
   @Input() contentTableData!: GetAllDeliveriesResponse[];
+  @Input() columns!: string[];
+  @Input() isMaintTable: boolean = true;
 
   dataSource = new MatTableDataSource<GetAllDeliveriesResponse>(
     this.contentTableData
   );
 
-  displayedColumns: string[] = [
-    'id',
-    'documento',
-    'motorista',
-    'cliente_origem',
-    'cliente_destino',
-    'status_entrega',
-  ];
+  displayedColumns!: string[];
 
   selection = new SelectionModel<GetAllDeliveriesResponse>(true, []);
 
   ngOnInit(): void {
+    console.log(this.contentTableData, "DATA")
+    console.log(this.columns, "COLUNS")
+    this.displayedColumns = this.columns;
     this.dataSource.filterPredicate = (
       data: GetAllDeliveriesResponse,
       filter: string

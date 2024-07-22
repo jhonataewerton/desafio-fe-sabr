@@ -1,3 +1,4 @@
+import { DeliveriesDataTransferServiceService } from './../../../../shared/services/deliveries-data-transfer-service.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { GetAllDeliveriesResponse } from 'src/app/models/GetAllDeliveriesResponse';
@@ -11,8 +12,19 @@ import { DeliveryService } from 'src/app/services/delivery/delivery.service';
 export class ListDeliveryComponent implements OnInit, OnDestroy {
   private readonly destroy$: Subject<void> = new Subject();
   public customerDatas: Array<GetAllDeliveriesResponse> = [];
+  columns: string[] = [
+    'id',
+    'documento',
+    'motorista',
+    'cliente_origem',
+    'cliente_destino',
+    'status_entrega',
+  ];
 
-  constructor(private deliveryService: DeliveryService) {}
+  constructor(
+    private deliveryService: DeliveryService,
+    private deliveriesDataTransferServiceService: DeliveriesDataTransferServiceService
+  ) {}
 
   ngOnInit(): void {
     this.getAPIDeliveryDatas();
@@ -24,7 +36,7 @@ export class ListDeliveryComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response) => {
-          console.log(response);
+          this.deliveriesDataTransferServiceService.setDeliveryDatas(response);
           this.customerDatas = response;
         },
         error: (err) => {
