@@ -1,17 +1,22 @@
-<app-delivery-list-table
-  [contentTableData]="contentDataByDeliver"
-  [columns]="columnsTableDeliveryByDeliver"
-  [isMaintTable]="false"
-></app-delivery-list-table>
+  <h1>Entregas por Motorista</h1>
+  <app-delivery-list-table
+    [contentTableData]="contentDataByDeliver"
+    [columns]="columnsTableDeliveryByDeliver"
+    [isMaintTable]="false"
+  ></app-delivery-list-table>
 
-<app-delivery-list-table
-  [contentTableData]="contentDataByDeliver"
-  [columns]="columnsTableUnsuccessfully"
-  [isMaintTable]="false"
-></app-delivery-list-table>
+  <h1>Entregas sem Sucesso por Motorista</h1>
 
-<app-delivery-list-table
-  [contentTableData]="contentDataByNeighbourhood"
-  [columns]="columnsTableDeliveryByNeighbourhood"
-  [isMaintTable]="false"
-></app-delivery-list-table>
+  <app-delivery-list-table
+    [contentTableData]="contentDataByDeliver"
+    [columns]="columnsTableUnsuccessfully"
+    [isMaintTable]="false"
+  ></app-delivery-list-table>
+
+  <h1>Entregas por Bairro</h1>
+
+  <app-delivery-list-table
+    [contentTableData]="contentDataByNeighbourhood"
+    [columns]="columnsTableDeliveryByNeighbourhood"
+    [isMaintTable]="false"
+  ></app-delivery-list-table>

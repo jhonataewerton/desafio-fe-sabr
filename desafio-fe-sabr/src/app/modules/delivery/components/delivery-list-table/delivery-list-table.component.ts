@@ -37,9 +37,17 @@ export class DeliveryListTableComponent
   selection = new SelectionModel<GetAllDeliveriesResponse>(true, []);
 
   ngOnInit(): void {
-    console.log(this.contentTableData, "DATA")
-    console.log(this.columns, "COLUNS")
     this.displayedColumns = this.columns;
+    this.configFilter();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['contentTableData']) {
+      this.dataSource.data = this.contentTableData;
+    }
+  }
+
+  configFilter() {
     this.dataSource.filterPredicate = (
       data: GetAllDeliveriesResponse,
       filter: string
@@ -57,12 +65,6 @@ export class DeliveryListTableComponent
         data.status_entrega.toLowerCase().includes(transformedFilter)
       );
     };
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['contentTableData']) {
-      this.dataSource.data = this.contentTableData;
-    }
   }
 
   applyFilter(event: Event) {

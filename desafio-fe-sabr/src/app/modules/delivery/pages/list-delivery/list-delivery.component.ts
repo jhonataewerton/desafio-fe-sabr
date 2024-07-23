@@ -27,7 +27,12 @@ export class ListDeliveryComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.getAPIDeliveryDatas();
+    if (this.deliveriesDataTransferServiceService.getDeliveryDatas().length == 0) {
+      this.getAPIDeliveryDatas();
+    } else {
+      this.customerDatas =
+        this.deliveriesDataTransferServiceService.getDeliveryDatas();
+    }
   }
 
   getAPIDeliveryDatas() {

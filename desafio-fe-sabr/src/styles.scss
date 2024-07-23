@@ -4,6 +4,19 @@ html,
 body {
   height: 100%;
 }
+h1 {
+  display: flex !important;
+  justify-content: center;
+}
+
+h1:nth-child(1) {
+margin-top: 20px;
+}
+
+th, td {
+  text-align: center !important;
+}
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
