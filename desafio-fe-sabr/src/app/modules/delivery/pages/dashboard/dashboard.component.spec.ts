@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DeliveryListTableComponent } from '../../components/delivery-list-table/delivery-list-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -8,7 +12,8 @@ describe('DashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardComponent ]
+      imports: [HttpClientModule, MatTableModule, MatPaginatorModule],
+      declarations: [ DashboardComponent, DeliveryListTableComponent ]
     })
     .compileComponents();
 

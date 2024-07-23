@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ToolbarComponent } from './toolbar.component';
+
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
@@ -8,7 +11,8 @@ describe('ToolbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ToolbarComponent ]
+      imports:[MatToolbarModule, MatIconModule, MatMenuModule],
+      declarations: [ToolbarComponent ]
     })
     .compileComponents();
 
