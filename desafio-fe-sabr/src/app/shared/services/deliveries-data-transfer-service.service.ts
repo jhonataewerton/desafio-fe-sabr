@@ -14,9 +14,7 @@ export class DeliveriesDataTransferServiceService {
   motoristas: GettAllDeliveriesByDeliver[] = [];
 
   setDeliveryDatas(deliveryDatas: Array<GetAllDeliveriesResponse>): void {
-    if (deliveryDatas) {
       this.deliveriesDataEmiiter$.next(deliveryDatas);
-    }
   }
 
   getDeliveryDatas() {

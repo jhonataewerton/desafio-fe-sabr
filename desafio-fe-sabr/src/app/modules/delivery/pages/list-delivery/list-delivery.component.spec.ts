@@ -12,6 +12,15 @@ import { MatInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
 
 describe('ListDeliveryComponent', () => {
+
+  const deliveriesDataTransferServiceSpy = jasmine.createSpyObj('DeliveriesDataTransferServiceService', [
+    'getDeliveryDatas',
+    'setDeliveryDatas'
+  ]);
+
+  const deliveryServiceSpy = jasmine.createSpyObj('DeliveryService', ['getAllDeliveries']);
+
+
   let component: ListDeliveryComponent;
   let fixture: ComponentFixture<ListDeliveryComponent>;
 
